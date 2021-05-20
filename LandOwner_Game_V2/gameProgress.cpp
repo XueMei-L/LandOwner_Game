@@ -4,35 +4,12 @@
 LandOwner::LandOwner()
 {
     SetNickName("默认地主");
-    SetSex("保密");
-    SetExp(0);
-    SetGold(1000);
-    std::cout << "LandOwner()" << std::endl;
-    InitCards();
-    ShowCards(packCards);
-}
-
-LandOwner::LandOwner(std::string nickName): m_NickName(nickName)
-{
-    SetSex("保密");
     SetExp(0);
     SetGold(1000);
     InitCards();
+    //ShowCards(packCards);
 }
 
-LandOwner::LandOwner(std::string nickName, std::string sex, int gold, long exp):m_NickName(nickName), m_Sex(sex), m_Gold(gold), m_Exp(exp)
-{
-    std::cout << "LandOwner(std::string nickName, std::string sex, int gold, long exp)" << std::endl;
-    InitCards();
-}
-
-void LandOwner::ShowInfo()
-{
-    std::cout << "昵称" << GetNickName() << std::endl;
-    std::cout << "性别" << GetSex() << std::endl;
-    std::cout << "金币" << GetGold() << std::endl;
-    std::cout << "经验" << GetExp() << std::endl;
-}
 
 void LandOwner::InitCards()
 {
@@ -47,44 +24,12 @@ void LandOwner::InitCards()
 
 void LandOwner::ShowCards(std::vector<int>& cards)
 {
-    //c
-    /*
-    for(int i = 0; i < cards.size(); i++){
-        std::cout << cards[i] << ",";
-    }
-    std::cout << std::endl;*/
-
-    //更专业的写法
-    /*
-    for(std::vector<int>::const_iterator iter = cards.begin(); iter!=cards.end(); iter++){
-        std::cout << *iter << "," ;
-    }
-    std::cout << std::endl;
-    */
-
-    //更简便的方式 - c++ 11
-    /*
-    for(auto iter = cards.begin(); iter!=cards.end(); iter++){
-        std::cout << *iter << "," ;
-    }
-    std::cout << std::endl;
-    */
-
-    //for区间遍历 - c++ 11
     SortCards(cards);
     for(auto card:cards)
     {
         std::cout << getColor(card) << getValue(card) << ",";
     }
     std::cout << std::endl;
-    
-
-    //使用算法的方式，将容器的内容复制到cout绑定的迭代器中
-    //#include <iterator>
-    //#include <algorithm>
-    //copy(cards.cbegin(), cards.cend(), std::ostream_iterator<int>(std::cout, ","));
-    //std::cout << std::endl;
-    //这里是指，复制cards的数从头到尾，放到函数ostream里面去，复制给cout，用“，”分开
 }
 
 /* 摸牌 */
@@ -113,27 +58,6 @@ void LandOwner::TouchCard(int cardCount)
 
 bool LandOwner::isContains(int cardNum)
 {
-    //普通方法
-    /*
-    for(int i = 0; i < surplusCards.size(); i++)
-    {
-        if(surplusCards[i] == cardIndex[i])
-        {
-            return true;
-        }
-    }
-    return false;
-    */
-
-    //使用算法查找
-    /*
-    std::vector<int>::iterator iter = find(surplusCards.begin(), surplusCards.end(), cardNum);
-    if(iter == surplusCards.end()){
-        return false;
-    }
-    return true;
-    */
-
     //简便++
     std::vector<int>::iterator iter = find(surplusCards.begin(), surplusCards.end(), cardNum);
     return iter != surplusCards.end();
@@ -141,18 +65,6 @@ bool LandOwner::isContains(int cardNum)
 
 void LandOwner::deleteCard(std::vector<int>& cardVec, int card)
 {
-    //普通青年做法
-    /*
-    for(auto iter = cardVec.begin(); iter!= cardVec.end();)
-    {
-        if(*iter == card)               //如果找到，那么删除元素
-        {
-            iter = cardVec.erase(card);     //这里的返回值指向已删除元素的下一个元素
-        }else{
-            ++iter;
-        }
-    }*/
-
     //使用算法删除
     auto iter = find(cardVec.begin(), cardVec.end(), card);
     if(iter != cardVec.end()){

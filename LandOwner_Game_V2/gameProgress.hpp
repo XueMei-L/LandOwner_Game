@@ -19,10 +19,6 @@ LANDOWNER_H
 class LandOwner
 {
     private:
-        std::string m_NickName;
-        std::string m_Sex;
-        int m_Gold;
-        long m_Exp;
         std::vector<int> packCards;         //默认的一副牌，从1-54
         std::vector<int> surplusCards;      //摸牌后，剩余的牌
         std::vector<int> currCards;         //当前玩家的手牌数组
@@ -34,17 +30,7 @@ class LandOwner
     public:
         LandOwner();
         LandOwner(std::string);
-        LandOwner(std::string, std::string, int, long);
         ~LandOwner();
-    
-        std::string GetNickName() { return m_NickName; }
-        void SetNickName(std::string val) { m_NickName = val; }
-        std::string GetSex() { return m_Sex; }
-        void SetSex(std::string val) { m_Sex = val; }
-        int GetGold() { return m_Gold; }
-        void SetGold(int val) { m_Gold = val; }
-        long GetExp() { return m_Exp; }
-        void SetExp(long val) { m_Exp = val; }
 
 
         void TouchCard(int);                  //摸牌
