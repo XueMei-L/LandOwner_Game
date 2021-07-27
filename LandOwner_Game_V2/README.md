@@ -6,5 +6,5 @@
 >> Major: computer engineering
 >> University: University of La Laguna
 >> Programming language: c++
->> Version: 01
+>> Version: 02
 ```
