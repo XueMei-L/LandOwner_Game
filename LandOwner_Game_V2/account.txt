@@ -1,0 +1,6 @@
+Username:xue
+Gold:1000
+Level1
+Username:li
+Gold:1000
+Level1

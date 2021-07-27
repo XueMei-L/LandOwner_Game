@@ -1,6 +1,6 @@
 #include <iostream>
 #include "userInfo.hpp"          //User_Information
-#include "callLandholder.hpp"     //Call_Landholder
+#include "callLandlord.hpp"     //Call_Landholder
 #include "gameProgress.hpp"       //Game_Progress
 
 //https://zhuanlan.zhihu.com/p/80835672
@@ -8,7 +8,7 @@
 int main(int argc, char *argv[]) {
 
     int user;
-    std::cout << ">> 1. Are you green hand.\n"
+    std::cout << ">> 1. New user.\n"
               << ">> 2. I have account.\n"
               << ">> Your choose is:";
     std::cin >> user;
